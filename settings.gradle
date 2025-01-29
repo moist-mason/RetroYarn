@@ -1,0 +1,8 @@
+rootProject.name = 'RetroYarn'
+
+def directory = new File(rootDir, '/versions/')
+directory.eachDir { dir ->
+    def proj = rootDir.toPath().relativize(dir.toPath()).toFile()
+    include proj.path
+    project(':' + proj.path).name = dir.name
+}

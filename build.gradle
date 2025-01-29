@@ -1,0 +1,106 @@
+import io.github.moistmason.retroyarn.*
+import io.github.moistmason.retroyarn.tasks.*
+
+plugins {
+    id 'java-library'
+    id 'java-gradle-plugin'
+}
+
+group 'io.github.moistmason'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.neoforged.net' }
+    maven { url = 'https://maven.fabricmc.net' }
+}
+
+task downloadVersionManifest (type: Download) {
+    src = new URL("https://piston-meta.mojang.com/mc/game/version_manifest_v2.json")
+    dest = file('versions/version_manifest.json')
+}
+
+subprojects {
+    repositories {
+        mavenCentral()
+        maven { url = 'https://maven.fabricmc.net'}
+    }
+
+    configurations {
+        enigma
+        mergetool
+        stitch
+        remapper
+    }
+
+    dependencies {
+        enigma 'cuchaz:enigma-cli:2.5.2:all'
+        mergetool 'net.neoforged:mergetool:2.0.6:fatjar'
+        stitch 'net.fabricmc:stitch:0.6.2:all'
+        remapper 'net.fabricmc:tiny-remapper:0.9.0:fat'
+    }
+
+    ext {
+        VERSION_MANIFEST = '../version_manifest.json'
+        VERSION = project.name
+        VERSION_DIR = projectDir.absolutePath
+
+        JSON = VERSION_DIR + '/data/version.json'
+        CLIENT = VERSION_DIR + '/data/client.jar'
+        SERVER = VERSION_DIR + '/data/server.jar'
+        MERGED = VERSION_DIR + '/data/merged.jar'
+        INTERMEDIARY = VERSION_DIR + '/data/intermediary.jar'
+        YARN = VERSION_DIR + '/data/yarn.jar'
+
+        INTERMEDIARY_MAPPINGS = VERSION_DIR + '/mappings/intermediary.tiny'
+        YARN_MAPPINGS = VERSION_DIR + '/mappings/yarn.tiny'
+    }
+
+    GradleIo.init()
+
+    task downloadJson (type: Download, dependsOn: downloadVersionManifest) {
+        src = new URL(rootProject.downloadVersionManifest.dest.json.versions.find { ver -> ver.id == VERSION }.url)
+        dest = file(JSON)
+    }
+
+    task downloadClient(type: Download, dependsOn: downloadJson) {
+        src = new URL(downloadJson.dest.json.downloads.get('client').url)
+        dest = file(VERSION_DIR + '/data/client.jar')
+    }
+
+    task mapIntermediary (type: JavaExec, dependsOn: downloadClient ) {
+        classpath = files(project.getConfigurations().getByName('enigma'))
+        main = 'cuchaz.enigma.command.Main'
+        args ('deobfuscate', CLIENT, INTERMEDIARY, INTERMEDIARY_MAPPINGS)
+    }
+
+    task mapYarn (type: JavaExec, dependsOn: mapIntermediary) {
+        classpath = files(project.getConfigurations().getByName('enigma'))
+        main = 'cuchaz.enigma.command.Main'
+        args ('deobfuscate', INTERMEDIARY, YARN, YARN_MAPPINGS)
+    }
+
+    /**
+     * Creates status file of how many classes, fields, and methods are mapped in the Yarn file.
+     */
+    task checkStatus(type: MappingStatus) {
+        mcVersion = project.name
+        tiny = file(YARN_MAPPINGS)
+        log = file(VERSION_DIR + '/mappings/status.txt')
+    }
+/*
+    task downloadLibraries (type: DownloadLibraries, dependsOn: downloadJson) {
+        versionJson = downloadJson.dest
+        paths = file(VERSION_DIR + '/data/libraries.txt')
+        directory = new File(project.rootDir, '/lib/')
+    }
+
+     */
+
+    clean {
+        delete(files(CLIENT))
+        delete(files(INTERMEDIARY))
+        delete(files(YARN))
+        delete(files(JSON))
+    }
+}

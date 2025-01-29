@@ -1,0 +1,16 @@
+plugins {
+    id 'java-library'
+    id 'java-gradle-plugin'
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://maven.neoforged.net' }
+}
+
+dependencies {
+    implementation 'commons-io:commons-io:2.18.0'
+
+    // It is incredibly cursed to use a Forge/NeoForged library in a Fabric-based project, but it's also incredibly funny.
+    implementation 'net.neoforged:srgutils:1.0.9'
+}

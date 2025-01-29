@@ -1,0 +1,184 @@
+{
+  "versions": [
+    {
+      "id": "1.14",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.14/intermediary-1.14-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.14%2Bbuild.9/yarn-1.14%2Bbuild.9-v2.jar"
+    },
+    {
+      "id": "1.14.1",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.14.1/intermediary-1.14.1-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.14.1%2Bbuild.9/yarn-1.14.1%2Bbuild.9-v2.jar"
+    },
+    {
+      "id": "1.14.2",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.14.2/intermediary-1.14.2-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.14.2%2Bbuild.7/yarn-1.14.2%2Bbuild.7-v2.jar"
+    },
+    {
+      "id": "1.14.3",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.14.3/intermediary-1.14.3-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.14.3%2Bbuild.13/yarn-1.14.3%2Bbuild.13-v2.jar"
+    },
+    {
+      "id": "1.14.4",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.14.4/intermediary-1.14.4-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.14.4%2Bbuild.9/yarn-1.14.4%2Bbuild.9-v2.jar"
+    },
+    {
+      "id": "1.15",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.15/intermediary-1.15-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.15%2Bbuild.2/yarn-1.15%2Bbuild.2-v2.jar"
+    },
+    {
+      "id": "1.15.1",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.15.1/intermediary-1.15.1-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.15.1%2Bbuild.37/yarn-1.15.1%2Bbuild.37-v2.jar"
+    },
+    {
+      "id": "1.15.2",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.15.2/intermediary-1.15.2-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.15.2%2Bbuild.17/yarn-1.15.2%2Bbuild.17-v2.jar"
+    },
+    {
+      "id": "1.16",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.16/intermediary-1.16-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.16%2Bbuild.4/yarn-1.16%2Bbuild.4-v2.jar"
+    },
+    {
+      "id": "1.16.1",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.16.1/intermediary-1.16.1-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.16.1%2Bbuild.21/yarn-1.16.1%2Bbuild.21-v2.jar"
+    },
+    {
+      "id": "1.16.2",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.16.2/intermediary-1.16.2-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.16.2%2Bbuild.47/yarn-1.16.2%2Bbuild.47-v2.jar"
+    },
+    {
+      "id": "1.16.3",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.16.3/intermediary-1.16.3-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.16.3%2Bbuild.47/yarn-1.16.3%2Bbuild.47-v2.jar"
+    },
+    {
+      "id": "1.16.4",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.16.4/intermediary-1.16.4-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.16.4%2Bbuild.9/yarn-1.16.4%2Bbuild.9-v2.jar"
+    },
+    {
+      "id": "1.16.5",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.16.5/intermediary-1.16.5-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.16.5%2Bbuild.9/yarn-1.16.5%2Bbuild.9-v2.jar"
+    },
+    {
+      "id": "1.17",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.17/intermediary-1.17-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.17%2Bbuild.9/yarn-1.17%2Bbuild.9-v2.jar"
+    },
+    {
+      "id": "1.17.1",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.17.1/intermediary-1.17.1-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.17.1%2Bbuild.65/yarn-1.17.1%2Bbuild.65-v2.jar"
+    },
+    {
+      "id": "1.18",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.18/intermediary-1.18-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.18%2Bbuild.1/yarn-1.18%2Bbuild.1-v2.jar"
+    },
+    {
+      "id": "1.18.1",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.18.1/intermediary-1.18.1-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.18.1%2Bbuild.22/yarn-1.18.1%2Bbuild.22-v2.jar"
+    },
+    {
+      "id": "1.18.2",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.18.2/intermediary-1.18.2-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.18.2%2Bbuild.4/yarn-1.18.2%2Bbuild.4-v2.jar"
+    },
+    {
+      "id": "1.19",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.19/intermediary-1.19-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.19%2Bbuild.4/yarn-1.19%2Bbuild.4-v2.jar"
+    },
+    {
+      "id": "1.19.1",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.19.1/intermediary-1.19.1-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.19.1%2Bbuild.6/yarn-1.19.1%2Bbuild.6-v2.jar"
+    },
+    {
+      "id": "1.19.2",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.19.2/intermediary-1.19.2-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.19.2%2Bbuild.28/yarn-1.19.2%2Bbuild.28-v2.jar"
+    },
+    {
+      "id": "1.19.3",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.19.3/intermediary-1.19.3-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.19.3%2Bbuild.5/yarn-1.19.3%2Bbuild.5-v2.jar"
+    },
+    {
+      "id": "1.19.4",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.19.4/intermediary-1.19.4-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.19.4%2Bbuild.2/yarn-1.19.4%2Bbuild.2-v2.jar"
+    },
+    {
+      "id": "1.20",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.20/intermediary-1.20-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.20%2Bbuild.1/yarn-1.20%2Bbuild.1-v2.jar"
+    },
+    {
+      "id": "1.20.1",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.20.1/intermediary-1.20.1-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.20.1%2Bbuild.9/yarn-1.20.1%2Bbuild.9-v2.jar"
+    },
+    {
+      "id": "1.20.2",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.20.2/intermediary-1.20.2-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.20.2%2Bbuild.4/yarn-1.20.2%2Bbuild.4-v2.jar"
+    },
+    {
+      "id": "1.20.3",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.20.3/intermediary-1.20.3-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.20.3%2Bbuild.1/yarn-1.20.3%2Bbuild.1-v2.jar"
+    },
+    {
+      "id": "1.20.4",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.20.4/intermediary-1.20.4-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.20.4%2Bbuild.3/yarn-1.20.4%2Bbuild.3-v2.jar"
+    },
+    {
+      "id": "1.20.5",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.20.5/intermediary-1.20.5-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.20.5%2Bbuild.1/yarn-1.20.5%2Bbuild.1-v2.jar"
+    },
+    {
+      "id": "1.20.6",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.20.6/intermediary-1.20.6-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.20.6%2Bbuild.3/yarn-1.20.6%2Bbuild.3-v2.jar"
+    },
+    {
+      "id": "1.21",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.21/intermediary-1.21-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.21%2Bbuild.9/yarn-1.21%2Bbuild.9-v2.jar"
+    },
+    {
+      "id": "1.21.1",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.21.1/intermediary-1.21.1-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.21.1%2Bbuild.3/yarn-1.21.1%2Bbuild.3-v2.jar"
+    },
+    {
+      "id": "1.21.2",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.21.2/intermediary-1.21.2-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.21.2%2Bbuild.1/yarn-1.21.2%2Bbuild.1-v2.jar"
+    },
+    {
+      "id": "1.21.3",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.21.3/intermediary-1.21.3-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.21.3%2Bbuild.2/yarn-1.21.3%2Bbuild.2-v2.jar"
+    },
+    {
+      "id": "1.21.4",
+      "intermediary": "https://maven.fabricmc.net/net/fabricmc/intermediary/1.21.4/intermediary-1.21.4-v2.jar",
+      "yarn": "https://maven.fabricmc.net/net/fabricmc/yarn/1.21.4%2Bbuild.8/yarn-1.21.4%2Bbuild.8-v2.jar"
+    }
+  ]
+}

@@ -64,7 +64,7 @@ class MappingStatus extends DefaultTask {
      * Simple percentage getter
      * @param numer
      * @param denom
-     * @return
+     * @return the percent
      */
     static String getPercent(int numer, int denom) {
         NumberFormat form = new DecimalFormat("00.00")

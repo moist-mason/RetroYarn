@@ -1,4 +1,4 @@
-tiny	2	0	named	intermediary
+tiny	2	0	intermediary	named
 c	com/mojang/blaze3d/platform/GLX	com/mojang/blaze3d/platform/GLX
 	m	(I)Ljava/nio/ByteBuffer;	allocateMemory	allocateMemory
 	m	(Ljava/nio/Buffer;)V	freeMemory	freeMemory

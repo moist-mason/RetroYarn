@@ -21,6 +21,8 @@ task downloadVersionManifest (type: Download) {
 }
 
 subprojects {
+    logger.lifecycle(project.name)
+
     repositories {
         mavenCentral()
         maven { url = 'https://maven.fabricmc.net'}
@@ -41,6 +43,7 @@ subprojects {
     }
 
     ext {
+        FABRIC_MANIFEST = '../fabric_manifest.json'
         VERSION_MANIFEST = '../version_manifest.json'
         VERSION = project.name
         VERSION_DIR = projectDir.absolutePath
@@ -58,13 +61,51 @@ subprojects {
 
     GradleIo.init()
 
-    task downloadJson (type: Download, dependsOn: downloadVersionManifest) {
-        src = new URL(rootProject.downloadVersionManifest.dest.json.versions.find { ver -> ver.id == VERSION }.url)
+    task downloadIntermediary (type: Download) {
+        inputs.file file(FABRIC_MANIFEST)
+        src = new URL(file(FABRIC_MANIFEST).json.versions.find { ver -> ver.id == VERSION }.intermediary)
+        dest = file(VERSION_DIR + '/mappings/intermediary.jar')
+    }
+
+    task downloadYarn (type: Download) {
+        src = new URL(file(FABRIC_MANIFEST).json.versions.find { ver -> ver.id == VERSION }.yarn)
+        dest = file(VERSION_DIR + '/mappings/yarn.jar')
+    }
+
+    task extractIntermediary (type: Copy, dependsOn: downloadIntermediary) {
+        from (zipTree(downloadIntermediary.dest).filter { f -> f.name == 'mappings.tiny' })
+        destinationDir file(VERSION_DIR + '/mappings/')
+        rename { it.replace('mappings', 'intermediary') }
+    }
+
+    task extractYarn (type: Copy, dependsOn: downloadYarn) {
+        from (zipTree(downloadYarn.dest).filter { f -> f.name == 'mappings.tiny' })
+        destinationDir file(VERSION_DIR + '/mappings/')
+        rename { it.replace('mappings', 'yarn') }
+    }
+
+    task extractAll (dependsOn: [extractYarn, extractIntermediary]) { }
+
+    // 1.14 - 1.14.2 have their mappings reversed, so we need to fix that.
+    task reverse (type: JavaExec) {
+        classpath = files(project.getConfigurations().getByName('stitch'))
+        main = 'net.fabricmc.stitch.Main'
+
+        // rename old yarn to temp.tiny. Swap the two headers in the final file
+        args ('reorderTinyV2', VERSION_DIR + '/mappings/temp.tiny', YARN_MAPPINGS, 'named', 'intermediary')
+    }
+
+
+    task downloadJson (type: DownloadJson, dependsOn: rootProject.downloadVersionManifest) {
+        inputs.file file(VERSION_MANIFEST)
+        manifest = file(VERSION_MANIFEST)
         dest = file(JSON)
     }
 
-    task downloadClient(type: Download, dependsOn: downloadJson) {
-        src = new URL(downloadJson.dest.json.downloads.get('client').url)
+    task downloadClient(type: DownloadJar, dependsOn: downloadJson) {
+        inputs.file file(JSON)
+        side = 'client'
+        versionJson = file(JSON)
         dest = file(VERSION_DIR + '/data/client.jar')
     }
 
@@ -80,27 +121,35 @@ subprojects {
         args ('deobfuscate', INTERMEDIARY, YARN, YARN_MAPPINGS)
     }
 
-    /**
+    /*
      * Creates status file of how many classes, fields, and methods are mapped in the Yarn file.
      */
+
     task checkStatus(type: MappingStatus) {
         mcVersion = project.name
         tiny = file(YARN_MAPPINGS)
         log = file(VERSION_DIR + '/mappings/status.txt')
     }
-/*
+
+    task writeCsv(type: WriteCsv) {
+        tiny = file(YARN_MAPPINGS)
+        classCsv = file(VERSION_DIR + '/mappings/csv/classes.csv')
+        fieldCsv = file(VERSION_DIR + '/mappings/csv/fields.csv')
+        methodCsv = file(VERSION_DIR + '/mappings/csv/methods.csv')
+    }
+
     task downloadLibraries (type: DownloadLibraries, dependsOn: downloadJson) {
         versionJson = downloadJson.dest
         paths = file(VERSION_DIR + '/data/libraries.txt')
         directory = new File(project.rootDir, '/lib/')
     }
 
-     */
-
     clean {
         delete(files(CLIENT))
         delete(files(INTERMEDIARY))
         delete(files(YARN))
         delete(files(JSON))
+        delete(files(VERSION_DIR + '/mappings/intermediary.jar'))
+        delete(files(VERSION_DIR + '/mappings/yarn.jar'))
     }
 }

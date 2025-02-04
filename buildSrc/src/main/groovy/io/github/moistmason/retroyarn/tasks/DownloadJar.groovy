@@ -1,6 +1,6 @@
 package io.github.moistmason.retroyarn.tasks
 
-import io.github.moistmason.retroyarn.GradleIo
+import io.github.moistmason.retroyarn.util.GradleIo
 import org.apache.commons.io.FileUtils
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.Input

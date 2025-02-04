@@ -1,5 +1,5 @@
-import io.github.moistmason.retroyarn.*
 import io.github.moistmason.retroyarn.tasks.*
+import io.github.moistmason.retroyarn.util.*
 
 plugins {
     id 'java-library'
@@ -102,17 +102,29 @@ subprojects {
         dest = file(JSON)
     }
 
-    task downloadClient(type: DownloadJar, dependsOn: downloadJson) {
-        inputs.file file(JSON)
-        side = 'client'
-        versionJson = file(JSON)
-        dest = file(VERSION_DIR + '/data/client.jar')
+    def sides = ['client', 'server']
+
+    sides.each { s ->
+        def downloadJar = task "download${s.capitalize()}" (type: DownloadJar, dependsOn: downloadJson) {
+            inputs.file file(JSON)
+            side = s
+            versionJson = file(JSON)
+            dest = file(VERSION_DIR + '/data/' + s + '.jar')
+        }
     }
 
-    task mapIntermediary (type: JavaExec, dependsOn: downloadClient ) {
+    task downloadJars(dependsOn: ['downloadClient', 'downloadServer']) { }
+
+    task merge(type: JavaExec, dependsOn: downloadJars) {
+        classpath = files(project.getConfigurations().getByName('mergetool'))
+        main = 'net.neoforged.mergetool.ConsoleTool'
+        args('merge', CLIENT, SERVER, MERGED)
+    }
+
+    task mapIntermediary (type: JavaExec, dependsOn: merge) {
         classpath = files(project.getConfigurations().getByName('enigma'))
         main = 'cuchaz.enigma.command.Main'
-        args ('deobfuscate', CLIENT, INTERMEDIARY, INTERMEDIARY_MAPPINGS)
+        args ('deobfuscate', MERGED, INTERMEDIARY, INTERMEDIARY_MAPPINGS)
     }
 
     task mapYarn (type: JavaExec, dependsOn: mapIntermediary) {

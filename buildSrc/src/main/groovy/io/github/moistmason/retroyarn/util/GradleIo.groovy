@@ -1,4 +1,4 @@
-package io.github.moistmason.retroyarn
+package io.github.moistmason.retroyarn.util
 
 import groovy.json.JsonSlurper
 
